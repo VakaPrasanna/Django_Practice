@@ -1,8 +1,12 @@
 <html>
     <head>
-        <title>Admin Dashboard</title>
+        <title>{% block title %}Admin Dashboard{% endblock %}</title>
     </head>
     <body>
-        <h1>{{name}}</h1>
+        <div id="content", name="content">
+            {% block content %}
+            <h1>Base Page</h1>
+            {% endblock %}
+        </div>
     </body>
 </html>
