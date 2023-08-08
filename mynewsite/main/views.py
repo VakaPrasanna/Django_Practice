@@ -18,7 +18,7 @@ def index(response, id):
                 item.save()
         elif response.POST.get("newItem"):
             txt = response.POST.get("new")
-            if txt is not None and len(txt) > 4:
+            if len(txt) > 4:
                 ls.item_set.create(text=txt , complete=False)
             else:
                 print("Invalid")       
