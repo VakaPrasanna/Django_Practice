@@ -1,19 +1,25 @@
 {% extends "main/base.html" %}
 
 {% block title %}
-   ToDoList
+   ViewList
 {% endblock %}
 
 {% block content %}
    <h1>{{ls.name}}</h1>
    <h2>{{ls.id}}</h2>
-   <ul>
-        {% for item in ls.item_set.all %}
-           {% if item.complete == True %}
-               <li>{{item.text}} - Complete Items</li> 
+   <form method="post" action="#">
+      {% csrf_token %}
+      <ul>
+         {% for item in ls.item_set.all %}
+            {% if item.complete == True %}
+               <li><input type="checkbox", value="clicked", name="c{{item.id}}" checked>{{item.text}}</li> 
             {% else %}
-                <li>{{item.text}} - Not Complete Items</li> 
+               <li><input type="checkbox", value="clicked", name="c{{item.id}}">{{item.text}}</li> 
             {% endif %}
-        {% endfor %}
-   </ul>
+         {% endfor %}
+      </ul>
+      <button type="submit", name="save", value="save">Save</button>
+      <input type="text", name="new">
+      <button type="submit", name="newItem", value="newItem">Add Item</button>
+   </form>
 {% endblock %}
